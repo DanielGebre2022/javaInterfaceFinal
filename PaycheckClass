@@ -1,0 +1,47 @@
+package com.Dan;
+
+public class Paycheck implements payroll{
+    double ot;
+    double reg;
+    double hours;
+    double rate;
+    public void setHours(double hours){
+        this.hours = hours;
+    }
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
+
+    @Override
+    public double regularPay() {
+        if (hours < 40) {
+
+            reg = hours * rate;
+        }
+        else {
+
+            reg = 40 * rate;
+        }
+        return reg;
+    }
+
+    @Override
+    public double overTimepay() {
+        if (hours > 40) {
+
+            ot = (rate * 1.5) * (hours - 40);
+        }
+        else{
+                ot = 0;
+            }
+        return ot;
+    }
+
+
+    @Override
+    public double totalPay() {
+
+        return overTimepay() + regularPay();
+    }
+
+}
